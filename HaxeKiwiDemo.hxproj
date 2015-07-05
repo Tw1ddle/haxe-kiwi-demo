@@ -19,6 +19,7 @@
     <class path="C:\HaxeToolkit\haxe\lib\openfl\3,1,1" />
     <class path="C:\HaxeToolkit\haxe\lib\lime\2,4,5" />
     <class path="source" />
+    <class path="lib\haxe-kiwi" />
     <class path="export\flash\haxe" />
   </classpaths>
   <!-- Build options -->

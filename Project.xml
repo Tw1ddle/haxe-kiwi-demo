@@ -2,14 +2,8 @@
 <project>
 	<!------------------------------APPLICATION SETTINGS---------------------------->
 	
-	<meta title="HaxeKiwiDemo" package="uk.co.samcodes.haxekiwidemo" version="1.1.0" company="Sam Twidale" />
+	<meta title="HaxeKiwiDemo" package="uk.co.samcodes.haxekiwidemo" version="1.0.0" company="Sam Twidale" />
 	<app file="HaxeKiwiDemo" main="Main" />
-	
-	<!-- This demo supports testing use of one ad network at a time -->
-	<!-- <set name="chartboostads" if="android" /> -->
-	<!-- <set name="chartboostads" if="ios" /> -->
-	<set name="admobads" if="android" />
-	<set name="admobads" if="ios" />
 	
 	<!--------------------------------WINDOW SETTINGS------------------------------->
 	
@@ -47,6 +41,8 @@
 	<!--------------------------------LIBRARIES------------------------------------->
 	
 	<haxelib name="flixel" />
+	
+	<include path="lib/haxe-kiwi/include.xml" />
 	
 	<!---------------------------------HAXEDEFINES---------------------------------->
 	
