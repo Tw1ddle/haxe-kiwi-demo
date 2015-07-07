@@ -6,9 +6,10 @@ Demo of the Haxe port of the Kiwi constraint solver. Kiwi is an efficient implem
 
 ### Usage ###
 
-This demo requires HaxeFlixel, so install it first:
+This demo requires HaxeFlixel and Actuate, so install those first:
 ```bash
 haxelib install flixel
+haxelib install actuate
 ```
 Open the project in FlashDevelop and build for your preferred target. All targets are supported.
 
@@ -17,4 +18,4 @@ Open the project in FlashDevelop and build for your preferred target. All target
 Build the app. Press the buttons at the bottom to use it.
 
 ### Notes ###
-If the demo does not look like it should or crashes then it may be due to a bug. If problems persist then contact me or open an issue.
+If the demo does not look like it should or crashes then please contact me or open an issue.
