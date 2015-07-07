@@ -1,6 +1,5 @@
 package states;
 
-import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
@@ -12,13 +11,13 @@ import json.EaseHelper;
 import json.JsonReader;
 import json.NodeDefinition;
 import kiwi.Constraint;
+import kiwi.DebugHelper;
 import kiwi.frontend.ConstraintParser;
 import kiwi.frontend.Resolver;
 import kiwi.Solver;
 import kiwi.Strength;
 import kiwi.Variable;
 import motion.Actuate;
-import kiwi.DebugHelper;
 
 using flixel.util.FlxSpriteUtil;
 

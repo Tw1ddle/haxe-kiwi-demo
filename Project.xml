@@ -35,7 +35,6 @@
 	<haxelib name="flixel" />
 	<haxelib name="actuate" />
 	
-	
 	<include path="lib/haxe-kiwi/include.xml" />
 	
 	<!---------------------------------HAXEDEFINES---------------------------------->
