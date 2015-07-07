@@ -1,0 +1,121 @@
+{  
+   "nodes":[  
+      {  
+         "xVar":"rootx",
+         "yVar":"rooty",
+         "xInequality":"rootx == mousex",
+         "yInequality":"rooty == mousey",
+         "image":"candycane.png",
+         "tweenEase":"expoout",
+		 "tweenDuration":1.0
+      },
+      {  
+         "xVar":"rightx",
+         "yVar":"righty",
+         "xInequality":"rightx == rootx + 32 + (64 * sin2Time)",
+         "yInequality":"righty == rooty",
+         "image":"bean_white.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":1.5
+      },
+      {  
+         "xVar":"leftx",
+         "yVar":"lefty",
+         "xInequality":"leftx == rootx - 32 - (64 * sin2Time)",
+         "yInequality":"lefty == mousey",
+         "image":"heart_red.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":1.5
+      },
+      {  
+         "xVar":"bottomx",
+         "yVar":"bottomy",
+         "xInequality":"bottomx == rootx",
+         "yInequality":"bottomy == mousey + 32 + (64 * sin2Time)",
+         "image":"wrappedsolid_blue.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":1.5
+      },
+      {  
+         "xVar":"topx",
+         "yVar":"topy",
+         "xInequality":"topx == rootx",
+         "yInequality":"topy == mousey - 32 - (64 * sin2Time)",
+         "image":"jelly_red.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":1.5
+      },
+      {  
+         "xVar":"top2x",
+         "yVar":"top2y",
+         "xInequality":"top2x == topx + 64",
+         "yInequality":"top2y == topy - 64 - (squareWave * 100)",
+         "image":"jelly_red.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":2.0
+      },
+      {  
+         "xVar":"top3x",
+         "yVar":"top3y",
+         "xInequality":"top3x == topx - 64",
+         "yInequality":"top3y == topy - 64 - (squareWave * 100)",
+         "image":"jelly_red.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":2.0
+      },
+      {  
+         "xVar":"bottom2x",
+         "yVar":"bottom2y",
+         "xInequality":"bottom2x == bottomx + 64",
+         "yInequality":"bottom2y == bottomy + 64 + (squareWave * 100)",
+         "image":"jelly_red.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":2.0
+      },
+      {  
+         "xVar":"bottom3x",
+         "yVar":"bottom3y",
+         "xInequality":"bottom3x == bottomx - 64 ",
+         "yInequality":"bottom3y == bottomy + 64 + (squareWave * 100)",
+         "image":"jelly_red.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":2.0
+      },
+      {  
+         "xVar":"right2x",
+         "yVar":"right2y",
+         "xInequality":"right2x == rightx + 64 + (squareWave * 100)",
+         "yInequality":"right2y == righty + 64",
+         "image":"jelly_red.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":2.0
+      },
+      {  
+         "xVar":"right3x",
+         "yVar":"right3y",
+         "xInequality":"right3x == rightx + 64 + (squareWave * 100)",
+         "yInequality":"right3y == righty - 64",
+         "image":"jelly_red.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":2.0
+      },
+      {  
+         "xVar":"left2x",
+         "yVar":"left2y",
+         "xInequality":"left2x == leftx - 64 - (squareWave * 100)",
+         "yInequality":"left2y == lefty + 64",
+         "image":"jelly_red.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":2.0
+      },
+      {  
+         "xVar":"left3x",
+         "yVar":"left3y",
+         "xInequality":"left3x == leftx - 64 - (squareWave * 100)",
+         "yInequality":"left3y == lefty - 64",
+         "image":"jelly_red.png",
+         "tweenEase":"quadout",
+		 "tweenDuration":2.0
+      }
+   ]
+}

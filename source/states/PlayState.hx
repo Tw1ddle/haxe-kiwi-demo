@@ -8,6 +8,7 @@ import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import haxe.Json;
+import json.EaseHelper;
 import json.JsonReader;
 import json.NodeDefinition;
 import kiwi.Constraint;
@@ -17,12 +18,7 @@ import kiwi.Solver;
 import kiwi.Strength;
 import kiwi.Variable;
 import motion.Actuate;
-import motion.easing.Bounce;
-import motion.easing.Expo;
-import motion.easing.IEasing;
-import motion.easing.Linear;
-import motion.easing.Quad;
-import motion.easing.Sine;
+import kiwi.DebugHelper;
 
 using flixel.util.FlxSpriteUtil;
 
@@ -32,7 +28,6 @@ class Node extends FlxSprite {
 	private var pY:Variable;
 	private var tweenDuration:Float;
 	private var ease:Dynamic;
-	
 	public var infoText:FlxText;
 	
 	public function new(pX:Variable, pY:Variable, ?graphic:FlxGraphicAsset, ?tweenDuration:Float = 0.1, ?ease:Dynamic) {
@@ -53,7 +48,7 @@ class Node extends FlxSprite {
 	}
 	
 	public function tween(dt:Float):Void {
-		Actuate.tween(this, tweenDuration, { x: pX.value - width / 2, y: pY.value - height / 2 }, true).ease(ease);
+		Actuate.tween(this, tweenDuration, { x: pX.value - width / 2, y: pY.value - height / 2 }, false).ease(ease);
 	}
 }
 
@@ -62,9 +57,7 @@ class PlayState extends FlxState {
 	private static var imageTypes:Array<String> = [ "jelly", "heart", "lollipop", "star", "swirl", "wrappedsolid" ];
 	private static var imageColors:Array<String> = [ "red", "teal", "blue", "orange", "purple", "yellow" ];
 	
-	private var problemTick:Int = 0;
 	private var problemDefinition: { nodes:Array<NodeDefinition> };
-	private var uiCamera:FlxCamera;
 	private var eventText:TextItem = new TextItem(0, 0, "Initializing...", 12);
 	
 	private var debugCanvas:FlxSprite = new FlxSprite();
@@ -76,48 +69,36 @@ class PlayState extends FlxState {
 	
 	private var mouseX:Variable;
 	private var mouseY:Variable;
+	
 	private var timeRunning:Float = 0;
 	private var sin2Time:Variable;
+	private var squareWave:Variable;
 	
-	private var varLogButton:TextButton;
-	private var drawDebugButton:TextButton;
+	private var drawDebug:Bool = true;
 	
 	override public function create():Void {
 		super.create();
-		
 		add(eventText);
 		
-		varLogButton = new TextButton(FlxG.width / 2, FlxG.height - 80, "Log variable values", outputSolution);
-		drawDebugButton = new TextButton(FlxG.width / 2 - 100, FlxG.height - 80, "Draw debug", toggleDrawDebug);
+		loadProblem(JsonReader.readJsonFile("assets/data/equalities.json"));
 		
-		uiCamera = new FlxCamera(0, 0, Std.int(FlxG.width), Std.int(FlxG.height));
-		uiCamera.bgColor = FlxColor.TRANSPARENT;
-		FlxG.cameras.add(uiCamera);
-		FlxCamera.defaultCameras = [uiCamera];
-		addText("Setup camera...");
-		
-		var problem:String = generateEqualitiesProblem();
-		addText("Made problem " + problemTick + "...");
-		
-		consumeProblem(problem);
-		addText("Consumed problem...");
-		
-		add(varLogButton);
-		add(drawDebugButton);
-		
+		debugCanvas.makeGraphic(FlxG.width, FlxG.height, FlxColor.TRANSPARENT, true);
 		add(debugCanvas);
+		
+		logInstructions();
 	}
 	
 	override public function draw():Void {
 		super.draw();
 		
-		debugCanvas.makeGraphic(FlxG.width, FlxG.height, FlxColor.TRANSPARENT);
-		for (nodeDefinition in problemDefinition.nodes) {
-			var x = resolver.resolveVariable(nodeDefinition.xVar);
-			var y = resolver.resolveVariable(nodeDefinition.yVar);
-			
-			debugCanvas.drawLine(x.value - 5, y.value, x.value + 5, y.value);
-			debugCanvas.drawLine(x.value, y.value - 5, x.value, y.value + 5);
+		if(drawDebug) {
+			for (nodeDefinition in problemDefinition.nodes) {
+				var x = resolver.resolveVariable(nodeDefinition.xVar);
+				var y = resolver.resolveVariable(nodeDefinition.yVar);
+				
+				debugCanvas.drawLine(x.value - 5, y.value, x.value + 5, y.value);
+				debugCanvas.drawLine(x.value, y.value - 5, x.value, y.value + 5);
+			}
 		}
 	}
 	
@@ -126,104 +107,55 @@ class PlayState extends FlxState {
 		
 		timeRunning += dt;
 		
-		solver.suggestValue(sin2Time, Math.pow(Math.sin(timeRunning), 2));
-		
-		if (FlxG.mouse.justPressed) {
-			solver.suggestValue(mouseX, FlxG.mouse.x);
-			solver.suggestValue(mouseY, FlxG.mouse.y);
+		if (FlxG.keys.justPressed.A) {
+			clearLog();
+			logInstructions();
+			logVariables();
 		}
+		if (FlxG.keys.justPressed.C) {
+			clearLog();
+			logInstructions();
+			logConstraints();
+		}
+		if (FlxG.keys.justPressed.D) {
+			toggleDebug();
+		}
+		
+		var sin2 = Math.pow(Math.sin(timeRunning), 2);
+		solver.suggestValue(sin2Time, sin2);
+		
+		if (sin2 <= 0.5) {
+			solver.suggestValue(squareWave, 0);
+		} else {
+			solver.suggestValue(squareWave, 1);
+		}
+		
+		solver.suggestValue(mouseX, FlxG.mouse.x);
+		solver.suggestValue(mouseY, FlxG.mouse.y);
 		
 		solver.updateVariables();
 		
-		if (FlxG.mouse.justPressed) {
-			for(node in nodes) {
-				node.tween(dt);
-			}
+		for(node in nodes) {
+			node.tween(dt);
 		}
 	}
 	
-	public function addText(text:String):Void {
-		eventText.text = text + "\n" + eventText.text;
-	}
-	
-	public function clearLog():Void {
-		eventText.text = "Waiting...";
-	}
-	
-	public function generateEqualitiesProblem():String {
-		var problem:String = JsonReader.readJsonFile("assets/data/candies.json");
-		problemTick++;
-		return problem;
-	}
-	
-	public function getCandyName(?type:String = null, ?color:String = null):String {
-		if (type == null) {
-			type = imageTypes[Std.int(Math.random() * (imageTypes.length - 1))];
-		}
-		if (color == null) {
-			color = imageColors[Std.int(Math.random() * (imageColors.length - 1))];
-		}
-		return "assets/images/" + type + "_" + color + ".png";
-	}
-	
-	public static function getEase(name:String):IEasing {
-		if (name == null || name.length == 0) {
-			return Linear.easeNone;
-		}
-		if (name == "quadin") {
-			return Quad.easeIn;
-		}
-		if (name == "quadinout") {
-			return Quad.easeInOut;
-		}
-		if (name == "quadout") {
-			return Quad.easeOut;
-		}
-		if (name == "sinein") {
-			return Sine.easeIn;
-		}
-		if (name == "sineinout") {
-			return Sine.easeInOut;
-		}
-		if (name == "sineout") {
-			return Sine.easeOut;
-		}
-		if (name == "bouncein") {
-			return Bounce.easeIn;
-		}
-		if (name == "bounceinout") {
-			return Bounce.easeInOut;
-		}
-		if (name == "bounceout") {
-			return Bounce.easeOut;
-		}
-		if (name == "expoin") {
-			return Expo.easeIn;
-		}
-		if (name == "expoinout") {
-			return Expo.easeInOut;
-		}
-		if (name == "expoout") {
-			return Expo.easeOut;
-		}
-		return Linear.easeNone;
-	}
-	
-	public function consumeProblem(problem:String):Void {
+	private function loadProblem(problem:String):Void {
 		solver.reset();
 		resolver = new Resolver();
 		
-		mouseX = resolver.resolveVariable("mouseX");
-		mouseY = resolver.resolveVariable("mouseY");
+		mouseX = resolver.resolveVariable("mousex");
+		mouseY = resolver.resolveVariable("mousey");
 		sin2Time = resolver.resolveVariable("sin2Time");
+		squareWave = resolver.resolveVariable("squareWave");
 		solver.addEditVariable(mouseX, Strength.strong);
 		solver.addEditVariable(mouseY, Strength.strong);
 		solver.addEditVariable(sin2Time, Strength.strong);
+		solver.addEditVariable(squareWave, Strength.strong);
 		
 		problemDefinition = Json.parse(problem);
 		
 		for (nodeDefinition in problemDefinition.nodes) {
-			//trace(constraintDefinition.inequality);
 			var constraintX:Constraint = ConstraintParser.parseConstraint(nodeDefinition.xInequality, resolver);
 			solver.addConstraint(constraintX);
 			var constraintY:Constraint = ConstraintParser.parseConstraint(nodeDefinition.yInequality, resolver);
@@ -231,9 +163,9 @@ class PlayState extends FlxState {
 			
 			var x = resolver.resolveVariable(nodeDefinition.xVar);
 			var y = resolver.resolveVariable(nodeDefinition.yVar);
-			var node = new Node(x, y, getCandyName(), nodeDefinition.tweenDuration, getEase(nodeDefinition.tweenEase));
+			var node = new Node(x, y, getCandyName(), nodeDefinition.tweenDuration, EaseHelper.getEase(nodeDefinition.tweenEase));
 			
-			if (nodeDefinition.xVar == "rootX" && nodeDefinition.yVar == "rootY") {
+			if (nodeDefinition.xVar == "rootx" && nodeDefinition.yVar == "rooty") {
 				root = node;
 			}
 			
@@ -243,20 +175,54 @@ class PlayState extends FlxState {
 		}
 	}
 	
-	public function outputSolution():Void {
-		addText("Outputting solution...");
+	private function toggleDebug():Void {
+		debugCanvas.makeGraphic(FlxG.width, FlxG.height, FlxColor.TRANSPARENT, true);
 		
-		var variables = resolver.variables;
+		drawDebug = !drawDebug;
 		
-		for (variable in variables) {
-			addText(variable.name + " = " + variable.value);
+		debugCanvas.visible = drawDebug;
+		for (node in nodes) {
+			node.infoText.visible = drawDebug;
 		}
 	}
 	
-	private function toggleDrawDebug():Void {
-		debugCanvas.visible = !debugCanvas.visible;
-		for (node in nodes) {
-			node.infoText.visible = !node.infoText.visible;
+	private function getCandyName(?type:String = null, ?color:String = null):String {
+		if (type == null) {
+			type = imageTypes[Std.int(Math.random() * (imageTypes.length - 1))];
 		}
+		if (color == null) {
+			color = imageColors[Std.int(Math.random() * (imageColors.length - 1))];
+		}
+		return "assets/images/" + type + "_" + color + ".png";
+	}
+	
+	private function logConstraints():Void {
+		addText("==========================");
+		addText("^^^^^Constraints^^^^^");
+		addText(DebugHelper.dumpConstraints(solver.constraints));
+		addText("==========================");
+	}
+	
+	private function logVariables():Void {
+		addText("==========================");
+		addText("^^^^^Solver variables^^^^^");
+		for (variable in resolver.variables) {
+			addText(variable.name + " = " + variable.value);
+		}
+		addText("==========================");
+	}
+	
+	private function logInstructions():Void {
+		addText("Press 'A' to dump solver variables");
+		addText("Press 'C' to dump solver constraints");
+		addText("Press 'D' to toggle debug rendering");
+	}
+	
+	public function addText(text:String):Void {
+		eventText.text = text + "\n" + eventText.text;
+	}
+	
+	public function clearLog():Void {
+		eventText.text = "Waiting...";
 	}
 }

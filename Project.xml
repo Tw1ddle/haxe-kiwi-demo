@@ -8,7 +8,7 @@
 	<!--------------------------------WINDOW SETTINGS------------------------------->
 	
 	<!--These window settings apply to all targets-->
-	<window width="1600" height="1000" fps="60" background="#000000" hardware="true" vsync="true" />
+	<window width="1300" height="750" fps="30" background="#000000" hardware="true" vsync="true" />
 	
 	<!--Web-specific-->
 	<window if="web"		orientation="landscape"  />
@@ -26,14 +26,6 @@
 	
 	<assets path="assets/data" include="*" type="data" />
 	<assets path="assets/images" include="*" type="image" />
-	<assets path="assets/music" type="music" unless="cpp">
-	</assets>
-	<assets path="assets/music" type="music" if="cpp">
-	</assets>
-	<assets path="assets/sounds" type="sound" unless="cpp">
-	</assets>
-	<assets path="assets/sounds" type="sound" if="cpp">
-	</assets>
 	<assets path="assets/fonts">
 		<font path="pf_westa_seven.ttf" id="westa_seven" />
 	</assets>
@@ -42,6 +34,7 @@
 	
 	<haxelib name="flixel" />
 	<haxelib name="actuate" />
+	
 	
 	<include path="lib/haxe-kiwi/include.xml" />
 	
