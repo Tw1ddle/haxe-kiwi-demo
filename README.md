@@ -1,8 +1,8 @@
 # haxe-kiwi Demo
 
-Demo of the [Haxe port](https://github.com/Tw1ddle/haxe-kiwi) of the [Kiwi](https://github.com/nucleic/kiwi) constraint solver. Kiwi is an efficient implementation of the algorithm based on the seminal Cassowary paper.
+Demo of the [Haxe port](https://github.com/Tw1ddle/haxe-kiwi) of the [Kiwi](https://github.com/nucleic/kiwi) constraint solver. Kiwi is an efficient implementation of the Cassowary algorithm based on the seminal Cassowary paper.
 
-### Usage ###
+## Usage
 
 This demo requires HaxeFlixel and Actuate, so install those first:
 ```bash
@@ -17,5 +17,5 @@ Build the app and follow the onscreen instructions to play with it.
 
 Edit the constraint definitions in ```data/equalities.json``` to modify the system. The example shown in the screenshot above is a system of equalities with some external edit variables such as the mouse position and current time which modify the system.
 
-### Notes ###
-If the demo does not look like it should, crashes or whatever then please contact me or open an issue.
+## Notes
+If the demo does not look or work like it should then please contact me or open an issue.

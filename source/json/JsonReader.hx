@@ -1,10 +1,8 @@
 package json;
 
-import haxe.macro.Context;
-import haxe.macro.Expr;
-import haxe.macro.Type;
-import haxe.macro.Format;
 import haxe.Json;
+import haxe.macro.Context;
+
 using StringTools;
 using Lambda;
 
