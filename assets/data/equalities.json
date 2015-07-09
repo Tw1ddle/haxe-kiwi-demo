@@ -114,7 +114,7 @@
          "xInequality":"left3x == leftx - 64 - (squareWave * 100)",
          "yInequality":"left3y == lefty - 64",
          "image":"jelly_red.png",
-		 "tweenEase":"quadout",
+         "tweenEase":"quadout",
          "tweenDuration":2.0
       }
    ]
