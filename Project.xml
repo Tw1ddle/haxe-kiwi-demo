@@ -27,6 +27,7 @@
 	<assets path="assets/data" include="*" type="data" />
 	<assets path="assets/images" include="*" type="image" />
 	<assets path="assets/fonts">
+		<!-- TODO no woffs or eofs are being produced when compiling HTML5 builds against openfl 3.1.1, lime 2.4.7, latest dev flixel currently! -->
 		<font path="pf_westa_seven.ttf" id="westa_seven" />
 	</assets>
 	
