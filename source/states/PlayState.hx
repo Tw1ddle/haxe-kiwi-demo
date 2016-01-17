@@ -4,7 +4,6 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.util.FlxAxes;
-import states.LayoutDemo;
 import states.ShipDemo;
 
 using flixel.util.FlxSpriteUtil;
@@ -25,18 +24,18 @@ class PlayState extends FlxState {
 		super.create();
 		
 		var buttons:Array<TextButton> = [];
-		buttons.push(new TextButton(0, 0, "Graphs Demo", function() {
-			openSubState(new GraphsDemo(this));
+		buttons.push(new TextButton(0, 0, "Candies Demo", function() {
+			openSubState(new CandiesDemo(this));
 		}));
 		buttons.push(new TextButton(0, 0, "Ship Demo", function() {
 			openSubState(new ShipDemo(this));
 		}));
 		// TODO
+		//buttons.push(new TextButton(0, 0, "Graphs Demo", function() {
+		//	openSubState(new GraphsDemo(this));
+		//}));
 		//buttons.push(new TextButton(0, 0, "Layout Demo", function() {
 		//	openSubState(new LayoutDemo(this));
-		//}));
-		//buttons.push(new TextButton(0, 0, "Candies Demo", function() {
-		//	openSubState(new CandiesDemo(this));
 		//}));
 		
 		var x:Float = 0;
