@@ -1,0 +1,13 @@
+{  
+   "nodes":[  
+      {  
+         "xVar":"rootx",
+         "yVar":"rooty",
+         "xInequality":"rootx == mousex",
+         "yInequality":"rooty == mousey",
+         "image":"candycane.png",
+         "tweenEase":"expoout",
+         "tweenDuration":1.0
+      }
+   ]
+}
