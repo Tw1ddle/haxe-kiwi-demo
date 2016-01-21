@@ -3,14 +3,15 @@ package states;
 import flixel.FlxG;
 import flixel.FlxSubState;
 import kiwi.DebugHelper;
-import kiwi.frontend.Resolver;
+import kiwi.frontend.IResolver;
+import kiwi.frontend.VarResolver;
 import kiwi.Solver;
 
 @:access(kiwi.Solver)
 class BaseDemoState extends FlxSubState {
 	private var game:PlayState;
 	
-	private var resolver:Resolver = new Resolver();
+	private var resolver:IResolver = new VarResolver();
 	private var solver:Solver = new Solver();
 	
 	private var eventText:TextItem = new TextItem(0, 0, "Initializing...", 12);
@@ -71,11 +72,22 @@ class BaseDemoState extends FlxSubState {
 		addText("==========================");
 	}
 	
-	public function logVariables(resolver:Resolver):Void {
+	public function logVariables(resolver:IResolver):Void {
 		addText("==========================");
 		addText("^^^^^Solver variables^^^^^");
-		for (variable in resolver.variables) {
-			addText(variable.name + " = " + variable.value);
+		
+		var varResolver = null;
+		
+		try {
+			varResolver = cast(resolver, VarResolver);
+		} catch(error:String) {
+			varResolver = null;
+		}
+		
+		if(varResolver != null) {
+			for (variable in varResolver.variables) {
+				addText(variable.name + " = " + variable.value);
+			}
 		}
 		addText("==========================");
 	}

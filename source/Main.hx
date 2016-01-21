@@ -9,12 +9,13 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import flixel.system.scaleModes.RatioScaleMode;
+import kiwi.tests.KiwiTestRunner;
 import openfl.system.Capabilities;
 import states.PlayState;
 
 class Main extends Sprite {
-	var gameWidth:Int = 1300; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
-	var gameHeight:Int = 750; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
+	var gameWidth:Int = 800; // Width of the game in pixels (might be less / more in actual pixels depending on your zoom).
+	var gameHeight:Int = 500; // Height of the game in pixels (might be less / more in actual pixels depending on your zoom).
 	
 	var initialState:Class<FlxState> = PlayState;
 	
@@ -24,6 +25,10 @@ class Main extends Sprite {
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 	
 	static public function main():Void {
+		#if unittests
+		new KiwiTestRunner();
+		#end
+		
 		Lib.current.addChild(new Main());
 	}
 	

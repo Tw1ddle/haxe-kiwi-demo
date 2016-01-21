@@ -5,10 +5,12 @@
 	<meta title="HaxeKiwiDemo" package="uk.co.samcodes.haxekiwidemo" version="1.0.0" company="Sam Twidale" />
 	<app file="HaxeKiwiDemo" main="Main" />
 	
+	<!-- <haxedef name="unittests" /> -->
+	
 	<!--------------------------------WINDOW SETTINGS------------------------------->
 	
 	<!--These window settings apply to all targets-->
-	<window width="1300" height="750" fps="30" background="#000000" hardware="true" vsync="true" />
+	<window width="800" height="500" fps="30" background="#000000" hardware="true" vsync="true" />
 	
 	<!--Web-specific-->
 	<window if="web"		orientation="landscape"  />

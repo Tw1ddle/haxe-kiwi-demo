@@ -4,16 +4,16 @@ import flixel.FlxG;
 import haxe.Json;
 import json.EaseHelper;
 import json.JsonReader;
-import json.NodeDefinition;
+import json.TweenNodeDefinition;
 import kiwi.Constraint;
 import kiwi.frontend.ConstraintParser;
-import kiwi.frontend.Resolver;
+import kiwi.frontend.VarResolver;
 import kiwi.Strength;
 import kiwi.Variable;
 import states.Node;
 
 class CandiesDemo extends BaseDemoState {	
-	private var problemDefinition: { nodes:Array<NodeDefinition> };
+	private var problemDefinition: { nodes:Array<TweenNodeDefinition> };
 	private var root:Node;
 	private var nodes = new Array<Node>();
 	private var mouseX:Variable;
@@ -33,7 +33,7 @@ class CandiesDemo extends BaseDemoState {
 	
 	private function loadProblem(problem:String):Void {
 		solver.reset();
-		resolver = new Resolver();
+		resolver = new VarResolver();
 		
 		mouseX = resolver.resolveVariable("mousex");
 		mouseY = resolver.resolveVariable("mousey");

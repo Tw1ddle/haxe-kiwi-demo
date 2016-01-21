@@ -8,10 +8,10 @@ import flixel.util.FlxColor;
 import haxe.Json;
 import json.EaseHelper;
 import json.JsonReader;
-import json.NodeDefinition;
+import json.TweenNodeDefinition;
 import kiwi.Constraint;
 import kiwi.frontend.ConstraintParser;
-import kiwi.frontend.Resolver;
+import kiwi.frontend.VarResolver;
 import kiwi.Strength;
 import kiwi.Variable;
 import states.Node;
@@ -39,7 +39,7 @@ class GraphsDemo extends BaseDemoState {
 	
 	private function loadProblem():Void {
 		solver.reset();
-		resolver = new Resolver();
+		resolver = new VarResolver();
 		
 		mouseX = resolver.resolveVariable("mousex");
 		mouseY = resolver.resolveVariable("mousey");

@@ -30,12 +30,12 @@ class PlayState extends FlxState {
 		buttons.push(new TextButton(0, 0, "Ship Demo", function() {
 			openSubState(new ShipDemo(this));
 		}));
+		buttons.push(new TextButton(0, 0, "Layout Demo", function() {
+			openSubState(new LayoutDemo(this));
+		}));
 		// TODO
 		//buttons.push(new TextButton(0, 0, "Graphs Demo", function() {
 		//	openSubState(new GraphsDemo(this));
-		//}));
-		//buttons.push(new TextButton(0, 0, "Layout Demo", function() {
-		//	openSubState(new LayoutDemo(this));
 		//}));
 		
 		var x:Float = 0;
