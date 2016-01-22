@@ -3,6 +3,7 @@ package states;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
+import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import haxe.Json;
 import json.JsonReader;
@@ -15,117 +16,105 @@ import kiwi.Strength;
 import kiwi.Symbolics.VariableSymbolics;
 import kiwi.Variable;
 
-// TODO make elements draggable, or have window size follow mouse etc
-
 class NodeSprite extends FlxSpriteGroup {	
 	private var node:Map<String, Variable>;
 	
 	private var rect:FlxSprite;
 	
-	public function new(node:Map<String, Variable>) {
+	private var rectColor:FlxColor;
+	
+	private var xV:Null<Float> = null;
+	private var yV:Null<Float> = null;
+	private var wV:Null<Float> = null;
+	private var hV:Null<Float> = null;
+	
+	private	var nodeX:Variable;
+	private	var nodeY:Variable;
+	private	var nodeW:Variable;
+	private	var nodeH:Variable;
+	
+	public function new(label:String, node:Map<String, Variable>) {
 		super();
 		this.node = node;
+		this.rect = new FlxSprite();
+		this.rectColor = FlxColor.fromRGBFloat(Math.random(), Math.random(), Math.random(), 0.3);
 		
-		var xV:Null<Float> = null;
-		var yV:Null<Float> = null;
-		var wV:Null<Float> = null;
-		var hV:Null<Float> = null;
+		updateVars();
 		
-		var x = node.get(LayoutDemo.LEFT);
-		var y = node.get(LayoutDemo.TOP);
-		var w = node.get(LayoutDemo.WIDTH);
-		var h = node.get(LayoutDemo.HEIGHT);
-		
-		if (x == null) {
-			x = node.get(LayoutDemo.RIGHT);
-			if (x != null) {
-				xV = x.value - w.value;
-			}
-		} else {
-			xV = x.value;
-		}
-		
-		if (y == null) {
-			y = node.get(LayoutDemo.BOTTOM);
-			if(y != null) {
-				yV = y.value - h.value;
-			}
-		} else {
-			yV = y.value;
-		}
-		
-		if(w != null) {
-			wV = w.value;
-		}
-		
-		if(h != null) {
-			hV = h.value;
-		}
-		
-		if (xV == null || yV == null || wV == null || hV == null) {
+		if (!varsValid()) {
 			return;
 		}
 		
-		if (Std.int(wV) <= 0 || Std.int(hV) <= 0) {
-			return;
-		}
-		
-		rect = new FlxSprite(xV, yV);
-		rect.makeGraphic(Std.int(wV), Std.int(hV), FlxColor.fromRGBFloat(Math.random(), Math.random(), Math.random(), 0.3));
+		x = xV;
+		y = yV;
+		rect.makeGraphic(Std.int(wV), Std.int(hV), rectColor);
 		add(rect);
+		
+		add(new TextItem(0, 0, label));
 	}
 	
 	override public function update(dt:Float):Void {
 		super.update(dt);
 		
-		var xV:Null<Float> = null;
-		var yV:Null<Float> = null;
-		var wV:Null<Float> = null;
-		var hV:Null<Float> = null;
+		updateVars();
 		
-		var x = node.get(LayoutDemo.LEFT);
-		var y = node.get(LayoutDemo.TOP);
-		var w = node.get(LayoutDemo.WIDTH);
-		var h = node.get(LayoutDemo.HEIGHT);
-		
-		if (x == null) {
-			x = node.get(LayoutDemo.RIGHT);
-			if (x != null) {
-				xV = x.value - w.value;
-			}
-		} else {
-			xV = x.value;
-		}
-		
-		if (y == null) {
-			y = node.get(LayoutDemo.BOTTOM);
-			if(y != null) {
-				yV = y.value - h.value;
-			}
-		} else {
-			yV = y.value;
-		}
-		
-		if(w != null) {
-			wV = w.value;
-		}
-		
-		if(h != null) {
-			hV = h.value;
-		}
-		
-		if (xV == null || yV == null || wV == null || hV == null) {
+		if (!varsValid()) {
 			return;
+		}
+		
+		x = xV;
+		y = yV;
+		
+		if (rect.width != wV || rect.height != hV) {
+			rect.makeGraphic(Std.int(wV), Std.int(hV), rectColor);
+		}
+		rect.width = wV;
+		rect.height = hV;
+	}
+	
+	private function updateVars():Void {
+		nodeX = node.get(LayoutDemo.LEFT);
+		nodeY = node.get(LayoutDemo.TOP);
+		nodeW = node.get(LayoutDemo.WIDTH);
+		nodeH = node.get(LayoutDemo.HEIGHT);
+		
+		if (nodeX == null) {
+			nodeX = node.get(LayoutDemo.RIGHT);
+			if (nodeX != null) {
+				xV = nodeX.value - nodeW.value;
+			}
+		} else {
+			xV = nodeX.value;
+		}
+		
+		if (nodeY == null) {
+			nodeY = node.get(LayoutDemo.BOTTOM);
+			if(nodeY != null) {
+				yV = nodeY.value - nodeH.value;
+			}
+		} else {
+			yV = nodeY.value;
+		}
+		
+		if(nodeW != null) {
+			wV = nodeW.value;
+		}
+		
+		if(nodeH != null) {
+			hV = nodeH.value;
+		}
+	}
+	
+	private inline function varsValid():Bool {
+		if (xV == null || yV == null || wV == null || hV == null) {
+			return false;
 		}
 		
 		if (Std.int(wV) <= 0 || Std.int(hV) <= 0) {
-			return;
+			return false;
 		}
 		
-		rect.x = xV;
-		rect.y = yV;
-		rect.width = wV;
-		rect.height = hV;
+		return true;
 	}
 }
 
@@ -187,8 +176,10 @@ class LayoutDemo extends BaseDemoState {
 		solver.updateVariables();
 		
 		var resolver = cast(resolver, NodeResolver);
-		for (node in resolver.nodes) {
-			add(new NodeSprite(node));
+		
+		for (key in resolver.nodes.keys()) {
+			var node = resolver.nodes.get(key);
+			add(new NodeSprite(key, node));
 		}
 	}
 	
