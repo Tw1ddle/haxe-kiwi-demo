@@ -4,15 +4,6 @@
 		{ "inequality": "container.top == 0", "strength": "required" },
 		{ "inequality": "container.width == global.windowWidth", "strength": "required" },
 		{ "inequality": "container.height >= global.windowHeight", "strength": "required" },
-		
-		{ "inequality": "title0.height == 50", "strength": "required" },
-		{ "inequality": "title1.height == 55", "strength": "required" },
-		{ "inequality": "title2.height == 60", "strength": "required" },
-		{ "inequality": "title3.height == 65", "strength": "required" },
-		{ "inequality": "title4.height == 70", "strength": "required" },
-		{ "inequality": "title5.height == 125", "strength": "required" },
-		{ "inequality": "more.height == 80", "strength": "required" },
-		
 		{ "inequality": "container.columnWidth == container.width * 0.4", "strength": "required" },
 		{ "inequality": "container.thumbHeight == container.columnWidth * 0.2", "strength": "required" },
 		{ "inequality": "container.padding == container.width * 0.05", "strength": "required" },
@@ -22,21 +13,23 @@
 		{ "inequality": "container.paddingUnderThumb == 5", "strength": "required" },
 		{ "inequality": "container.rowPadding == 15", "strength": "required" },
 		{ "inequality": "container.buttonPadding == 20", "strength": "required" },
-
+		
 		{ "inequality": "thumb0.left == container.leftPadding", "strength": "required" },
 		{ "inequality": "thumb0.top == container.padding", "strength": "required" },
 		{ "inequality": "thumb0.height == container.thumbHeight", "strength": "required" },
 		{ "inequality": "thumb0.width == container.columnWidth", "strength": "required" },
-
+		
+		{ "inequality": "title0.height == 50", "strength": "required" },
 		{ "inequality": "title0.left == container.leftPadding", "strength": "required" },
 		{ "inequality": "title0.top == thumb0.bottom + container.paddingUnderThumb", "strength": "required" },
 		{ "inequality": "title0.width == container.columnWidth", "strength": "required" },
-
+		
 		{ "inequality": "thumb1.right == container.rightPadding", "strength": "required" },
 		{ "inequality": "thumb1.top == container.padding", "strength": "required" },
 		{ "inequality": "thumb1.height == container.thumbHeight", "strength": "required" },
 		{ "inequality": "thumb1.width == container.columnWidth", "strength": "required" },
-
+		
+		{ "inequality": "title1.height == 55", "strength": "required" },
 		{ "inequality": "title1.right == container.rightPadding", "strength": "required" },
 		{ "inequality": "title1.top == thumb0.bottom + container.paddingUnderThumb", "strength": "required" },
 		{ "inequality": "title1.width == container.columnWidth", "strength": "required" },
@@ -48,7 +41,8 @@
 		{ "inequality": "thumb2.top == title1.bottom + container.rowPadding", "strength": "weak" },
 		{ "inequality": "thumb2.height == container.thumbHeight", "strength": "required" },
 		{ "inequality": "thumb2.width == container.columnWidth", "strength": "required" },
-
+		
+		{ "inequality": "title2.height == 60", "strength": "required" },
 		{ "inequality": "title2.left == container.leftPadding", "strength": "required" },
 		{ "inequality": "title2.top == thumb2.bottom + container.paddingUnderThumb", "strength": "required" },
 		{ "inequality": "title2.width == container.columnWidth", "strength": "required" },
@@ -57,11 +51,12 @@
 		{ "inequality": "thumb3.top == thumb2.top", "strength": "required" },
 		{ "inequality": "thumb3.height == container.thumbHeight", "strength": "required" },
 		{ "inequality": "thumb3.width == container.columnWidth", "strength": "required" },
-
+		
+		{ "inequality": "title3.height == 65", "strength": "required" },
 		{ "inequality": "title3.right == container.rightPadding", "strength": "required" },
 		{ "inequality": "title3.top == thumb3.bottom + container.paddingUnderThumb", "strength": "required" },
 		{ "inequality": "title3.width == container.columnWidth", "strength": "required" },
-
+		
 		{ "inequality": "thumb4.left == container.leftPadding", "strength": "required" },
 		{ "inequality": "thumb4.top >= title2.bottom + container.rowPadding", "strength": "required" },
 		{ "inequality": "thumb4.top >= title3.bottom + container.rowPadding", "strength": "required" },
@@ -69,27 +64,30 @@
 		{ "inequality": "thumb4.top == title3.bottom + container.rowPadding", "strength": "weak" },
 		{ "inequality": "thumb4.height == container.thumbHeight", "strength": "required" },
 		{ "inequality": "thumb4.width == container.columnWidth", "strength": "required" },
-
+		
+		{ "inequality": "title4.height == 70", "strength": "required" },
 		{ "inequality": "title4.left == container.leftPadding", "strength": "required" },
 		{ "inequality": "title4.top == thumb4.bottom + container.paddingUnderThumb", "strength": "required" },
 		{ "inequality": "title4.height == title4.height", "strength": "required" },
 		{ "inequality": "title4.width == container.columnWidth", "strength": "required" },
-
+		
 		{ "inequality": "thumb5.right == container.rightPadding", "strength": "required" },
 		{ "inequality": "thumb5.top == thumb4.top", "strength": "required" },
 		{ "inequality": "thumb5.height == container.thumbHeight", "strength": "required" },
 		{ "inequality": "thumb5.width == container.columnWidth", "strength": "required" },
-
+		
+		{ "inequality": "title5.height == 125", "strength": "required" },
 		{ "inequality": "title5.right == container.rightPadding", "strength": "required" },
 		{ "inequality": "title5.top == thumb5.bottom + container.paddingUnderThumb", "strength": "required" },
 		{ "inequality": "title5.width == container.columnWidth", "strength": "required" },
-
+		
 		{ "inequality": "line.height == 5", "strength": "required" },
 		{ "inequality": "line.width == container.width", "strength": "required" },
 		{ "inequality": "line.left == container.left", "strength": "required" },
 		{ "inequality": "line.top >= title4.bottom + container.rowPadding", "strength": "required" },
 		{ "inequality": "line.top >= title5.bottom + container.rowPadding", "strength": "required" },
-
+		
+		{ "inequality": "more.height == 80", "strength": "required" },
 		{ "inequality": "more.top == line.bottom + container.buttonPadding", "strength": "required" },
 		{ "inequality": "more.height == more.height", "strength": "required" },
 		{ "inequality": "more.left == container.leftPadding", "strength": "required" },
