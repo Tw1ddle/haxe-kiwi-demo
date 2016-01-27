@@ -1,0 +1,9 @@
+{
+   "nodes":[
+		{ "inequality": "pointer.size == 30", "strength": "required" },
+		{ "inequality": "pointer.left == global.mousex - pointer.size / 2", "strength": "required" },
+		{ "inequality": "pointer.top == global.mousey - pointer.size / 2", "strength": "required" },
+		{ "inequality": "pointer.width == pointer.size", "strength": "required" },
+		{ "inequality": "pointer.height == pointer.size", "strength": "required" }
+   ]
+}

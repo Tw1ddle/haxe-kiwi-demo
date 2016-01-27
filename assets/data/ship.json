@@ -1,0 +1,85 @@
+{  
+   "nodes":[  
+      {  
+         "xVar":"rootx",
+         "yVar":"rooty",
+         "xInequality":"rootx == mousex",
+         "yInequality":"rooty == mousey",
+         "image":"wrappedsolid_blue.png",
+         "tweenEase":"expoout",
+         "tweenDuration":1.0
+      },
+      {  
+         "xVar":"head0x",
+         "yVar":"head0y",
+         "xInequality":"head0x == rootx - 64",
+         "yInequality":"head0y == rooty",
+         "image":"wrappedsolid_blue.png",
+         "tweenEase":"expoout",
+         "tweenDuration":1.0
+      },
+      {  
+         "xVar":"head1x",
+         "yVar":"head1y",
+         "xInequality":"head1x == head0x - 64",
+         "yInequality":"head1y == head0y",
+         "image":"wrappedsolid_blue.png",
+         "tweenEase":"expoout",
+         "tweenDuration":1.0
+      },
+      {  
+         "xVar":"head2x",
+         "yVar":"head2y",
+         "xInequality":"head2x == head1x - 64",
+         "yInequality":"head2y == head1y",
+         "image":"wrappedsolid_blue.png",
+         "tweenEase":"expoout",
+         "tweenDuration":1.0
+      },
+      {  
+         "xVar":"bodyrightx",
+         "yVar":"bodyrighty",
+         "xInequality":"bodyrightx == head2x - 96",
+         "yInequality":"bodyrighty == head2y",
+         "image":"wrappedsolid_blue.png",
+         "tweenEase":"expoout",
+         "tweenDuration":1.0
+      },
+      {  
+         "xVar":"bodytopx",
+         "yVar":"bodytopy",
+         "xInequality":"bodytopx == bodyrightx",
+         "yInequality":"bodytopy == bodyrighty + 48",
+         "image":"wrappedsolid_blue.png",
+         "tweenEase":"expoout",
+         "tweenDuration":1.0
+      },
+      {  
+         "xVar":"bodybottomx",
+         "yVar":"bodybottomy",
+         "xInequality":"bodybottomx == bodyrightx",
+         "yInequality":"bodybottomy == bodyrighty - 48",
+         "image":"wrappedsolid_blue.png",
+         "tweenEase":"expoout",
+         "tweenDuration":1.0
+      },
+      {  
+         "xVar":"bodycorex",
+         "yVar":"bodycorey",
+         "xInequality":"bodycorex == bodyrightx - 96",
+         "yInequality":"bodycorey == bodyrighty",
+         "image":"wrappedsolid_blue.png",
+         "tweenEase":"expoout",
+         "tweenDuration":1.0
+      },
+      {  
+         "xVar":"bodytailx",
+         "yVar":"bodytaily",
+         "xInequality":"bodytailx == bodycorex - 96",
+         "yInequality":"bodytaily == bodycorey",
+         "image":"wrappedsolid_blue.png",
+         "tweenEase":"expoout",
+         "tweenDuration":1.0
+      }
+	  ]
+}
