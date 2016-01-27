@@ -4,9 +4,8 @@ import flixel.FlxG;
 import flixel.FlxState;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.util.FlxAxes;
-import states.layout.LayoutDemo;
-import states.ShipDemo;
 import json.JsonReader;
+import states.layout.LayoutDemo;
 
 using flixel.util.FlxSpriteUtil;
 
@@ -29,10 +28,11 @@ class PlayState extends FlxState {
 		buttons.push(new TextButton(0, 0, "Candies Demo", function() {
 			openSubState(new CandiesDemo(this));
 		}));
-		buttons.push(new TextButton(0, 0, "Ship Demo", function() {
-			openSubState(new ShipDemo(this));
-		}));
-		buttons.push(new TextButton(0, 0, "Simple Demo Layout", function() {
+		// TODO
+		//buttons.push(new TextButton(0, 0, "Ship Demo", function() {
+		//	openSubState(new ShipDemo(this));
+		//}));
+		buttons.push(new TextButton(0, 0, "Simple Layout", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/simple_layout.json")));
 		}));
 		buttons.push(new TextButton(0, 0, "Container Layout", function() {
