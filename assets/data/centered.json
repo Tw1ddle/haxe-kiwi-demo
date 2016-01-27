@@ -1,13 +1,15 @@
 {
    "nodes":[
-		{ "inequality": "container.left == 0", "strength": "required" },
-		{ "inequality": "container.top == 0", "strength": "required" },
+		{ "inequality": "container.left == global.windowWidth / 2 - container.width / 2", "strength": "required" },
+		{ "inequality": "container.top == global.windowHeight / 2 - container.height / 2", "strength": "required" },
 		{ "inequality": "container.width >= global.mousex", "strength": "strong" },
 		{ "inequality": "container.height >= global.mousey", "strength": "strong" },
+		{ "inequality": "container.width >= global.windowWidth / 2", "strength": "required" },
+		{ "inequality": "container.height >= global.windowHeight / 2", "strength": "required" },
 		{ "inequality": "container.padding == container.width * 0.1", "strength": "required" },
 		
-		{ "inequality": "box0.left == container.padding", "strength": "required" },
-		{ "inequality": "box0.top == container.padding", "strength": "required" },
+		{ "inequality": "box0.left == container.left + container.padding", "strength": "required" },
+		{ "inequality": "box0.top == container.top + container.padding", "strength": "required" },
 		{ "inequality": "box0.width == container.width - container.padding * 2", "strength": "required" },
 		{ "inequality": "box0.height == container.height - container.padding * 2", "strength": "required" },
 		{ "inequality": "box0.padding == box0.width * 0.1", "strength": "required" },

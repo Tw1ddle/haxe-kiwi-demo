@@ -54,19 +54,25 @@ class LayoutDemo extends BaseDemoState {
 			trace("Constraint exception: " + error);
 		}
 		
-		mouseX = resolver.resolveVariable("global.mousex");
-		mouseY = resolver.resolveVariable("global.mousey");
-		windowWidth = resolver.resolveVariable("global.windowWidth");
-		windowHeight = resolver.resolveVariable("global.windowHeight");
-		
-		solver.addEditVariable(mouseX, Strength.strong);
-		solver.addEditVariable(mouseY, Strength.strong);
-		solver.addEditVariable(windowWidth, Strength.strong);
-		solver.addEditVariable(windowHeight, Strength.strong);
-		
-		suggestValues();
-		
-		solver.updateVariables();
+		try {
+			mouseX = resolver.resolveVariable("global.mousex");
+			mouseY = resolver.resolveVariable("global.mousey");
+			windowWidth = resolver.resolveVariable("global.windowWidth");
+			windowHeight = resolver.resolveVariable("global.windowHeight");
+			
+			solver.addEditVariable(mouseX, Strength.strong);
+			solver.addEditVariable(mouseY, Strength.strong);
+			solver.addEditVariable(windowWidth, Strength.strong);
+			solver.addEditVariable(windowHeight, Strength.strong);
+			
+			suggestValues();
+			
+			solver.updateVariables();
+		} catch (error:String) {
+			trace("Constraint exception: " + error);
+		} catch (error:Dynamic) {
+			addText("Unknown exception: " + Std.string(error));
+		}
 		
 		var resolver = cast(resolver, NodeResolver);
 		
@@ -102,10 +108,8 @@ class LayoutDemo extends BaseDemoState {
 		try {
 			solver.suggestValue(mouseX, FlxG.mouse.x);
 			solver.suggestValue(mouseY, FlxG.mouse.y);
-			
-			// NOTE allowing user to change window size by moving mouse
-			solver.suggestValue(windowWidth, FlxG.mouse.x);
-			solver.suggestValue(windowHeight, FlxG.mouse.y);
+			solver.suggestValue(windowWidth, FlxG.width);
+			solver.suggestValue(windowHeight, FlxG.height);
 		} catch (error:String) {
 			addText("Caught exception: " + error);
 		} catch (error:Dynamic) {

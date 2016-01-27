@@ -38,9 +38,24 @@ class PlayState extends FlxState {
 		buttons.push(new TextButton(0, 0, "Container Layout", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/container.json")));
 		}));
+		buttons.push(new TextButton(0, 0, "Centered Layout", function() {
+			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/centered.json")));
+		}));
 		buttons.push(new TextButton(0, 0, "Minsize", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/minsize.json")));
 		}));
+		buttons.push(new TextButton(0, 0, "MousePointer", function() {
+			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/pointer.json")));
+		}));
+		
+		// TODO BUG: sometimes these work, other times they don't. Maybe due to map order in Kiwi, or some other bug..?
+		buttons.push(new TextButton(0, 0, "Maxsize", function() {
+			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/maxsize.json")));
+		}));
+		buttons.push(new TextButton(0, 0, "MinMaxsize", function() {
+			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/minmaxsize.json")));
+		}));
+		
 		// TODO
 		//buttons.push(new TextButton(0, 0, "Graphs Demo", function() {
 		//	openSubState(new GraphsDemo(this));

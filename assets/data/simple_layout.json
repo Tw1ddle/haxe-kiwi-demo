@@ -2,8 +2,8 @@
    "nodes":[
 		{ "inequality": "container.left == 0", "strength": "required" },
 		{ "inequality": "container.top == 0", "strength": "required" },
-		{ "inequality": "container.width == global.windowWidth", "strength": "required" },
-		{ "inequality": "container.height >= global.windowHeight", "strength": "required" },
+		{ "inequality": "container.width == global.mousex", "strength": "strong" },
+		{ "inequality": "container.height == global.mousey", "strength": "strong" },
 		{ "inequality": "container.columnWidth == container.width * 0.4", "strength": "required" },
 		{ "inequality": "container.thumbHeight == container.columnWidth * 0.2", "strength": "required" },
 		{ "inequality": "container.padding == container.width * 0.05", "strength": "required" },
