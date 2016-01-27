@@ -107,9 +107,9 @@ class LayoutDemo extends BaseDemoState {
 			solver.suggestValue(windowWidth, FlxG.mouse.x);
 			solver.suggestValue(windowHeight, FlxG.mouse.y);
 		} catch (error:String) {
-			trace("Caught exception: " + error);
+			addText("Caught exception: " + error);
 		} catch (error:Dynamic) {
-			trace("Unknown exception " + error);
+			addText("Unknown exception: " + Std.string(error));
 		}
 	}
 	

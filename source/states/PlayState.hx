@@ -38,6 +38,9 @@ class PlayState extends FlxState {
 		buttons.push(new TextButton(0, 0, "Container Layout", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/container.json")));
 		}));
+		buttons.push(new TextButton(0, 0, "Minsize", function() {
+			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/minsize.json")));
+		}));
 		// TODO
 		//buttons.push(new TextButton(0, 0, "Graphs Demo", function() {
 		//	openSubState(new GraphsDemo(this));
