@@ -1,4 +1,4 @@
-package states;
+package states.tweens;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -14,7 +14,7 @@ import kiwi.frontend.ConstraintParser;
 import kiwi.frontend.VarResolver;
 import kiwi.Strength;
 import kiwi.Variable;
-import states.Node;
+import states.tweens.TweenSprite;
 
 using flixel.util.FlxSpriteUtil;
 

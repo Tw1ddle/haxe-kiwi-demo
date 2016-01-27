@@ -1,13 +1,14 @@
-package states.layout;
+package states.layouts;
 
 import flixel.FlxG;
 import haxe.Json;
-import json.NodeDefinition;
+import json.LayoutNodeDefinition;
 import kiwi.frontend.ConstraintParser;
 import kiwi.frontend.IResolver;
 import kiwi.Strength;
 import kiwi.Variable;
 
+// Demonstrates mock UI layouts
 class LayoutDemo extends BaseDemoState {
     public static inline var LEFT = "left";
     public static inline var RIGHT = "right";
@@ -22,24 +23,18 @@ class LayoutDemo extends BaseDemoState {
 	private var windowHeight:Variable;
 	
 	private var layoutString:String;
-	private var problemDefinition: { nodes:Array<NodeDefinition> };
+	private var problemDefinition: { nodes:Array<LayoutNodeDefinition> };
 	
 	public function new(game:PlayState, layoutString:String) {
 		super(game);
 		
 		this.layoutString = layoutString;
 		
-		resolver = new NodeResolver(solver);
-	}
-	
-	private static function approxEqual(a:Float, b:Float):Bool {		
-		var epsilon:Float = 1.0e-2;
-		return Math.abs(a - b) < epsilon;
+		resolver = new LayoutResolver(solver);
 	}
 	
 	override public function create():Void {
 		super.create();
-		
 		loadProblem(layoutString);
 	}
 	
@@ -66,7 +61,6 @@ class LayoutDemo extends BaseDemoState {
 			solver.addEditVariable(windowHeight, Strength.strong);
 			
 			suggestValues();
-			
 			solver.updateVariables();
 		} catch (error:String) {
 			trace("Constraint exception: " + error);
@@ -74,11 +68,11 @@ class LayoutDemo extends BaseDemoState {
 			addText("Unknown exception: " + Std.string(error));
 		}
 		
-		var resolver = cast(resolver, NodeResolver);
+		var resolver = cast(resolver, LayoutResolver);
 		
 		for (key in resolver.nodes.keys()) {
 			var node = resolver.nodes.get(key);
-			add(new NodeSprite(key, node));
+			add(new LayoutSprite(key, node));
 		}
 	}
 	
@@ -89,7 +83,7 @@ class LayoutDemo extends BaseDemoState {
 		var nodeResolver = null;
 		
 		try {
-			nodeResolver = cast(resolver, NodeResolver);
+			nodeResolver = cast(resolver, LayoutResolver);
 		} catch(error:String) {
 			nodeResolver = null;
 		}

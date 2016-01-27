@@ -1,4 +1,4 @@
-package states;
+package states.tweens;
 
 import flixel.FlxG;
 import haxe.Json;
@@ -10,12 +10,12 @@ import kiwi.frontend.ConstraintParser;
 import kiwi.frontend.VarResolver;
 import kiwi.Strength;
 import kiwi.Variable;
-import states.Node;
+import states.tweens.TweenSprite;
 
 class CandiesDemo extends BaseDemoState {	
 	private var problemDefinition: { nodes:Array<TweenNodeDefinition> };
-	private var root:Node;
-	private var nodes = new Array<Node>();
+	private var root:TweenSprite;
+	private var nodes = new Array<TweenSprite>();
 	private var mouseX:Variable;
 	private var mouseY:Variable;
 	private var sin2Time:Variable;
@@ -54,7 +54,7 @@ class CandiesDemo extends BaseDemoState {
 			
 			var x = resolver.resolveVariable(nodeDefinition.xVar);
 			var y = resolver.resolveVariable(nodeDefinition.yVar);
-			var node = new Node(x, y, BaseDemoState.getCandyName(), nodeDefinition.tweenDuration, EaseHelper.getEase(nodeDefinition.tweenEase));
+			var node = new TweenSprite(x, y, BaseDemoState.getCandyName(), nodeDefinition.tweenDuration, EaseHelper.getEase(nodeDefinition.tweenEase));
 			
 			if (nodeDefinition.xVar == "rootx" && nodeDefinition.yVar == "rooty") {
 				root = node;

@@ -1,11 +1,12 @@
-package states.layout;
+package states.layouts;
 
 import flixel.FlxSprite;
 import flixel.group.FlxSpriteGroup;
 import flixel.util.FlxColor;
 import kiwi.Variable;
 
-class NodeSprite extends FlxSpriteGroup {	
+// Describes a sprite in a layout
+class LayoutSprite extends FlxSpriteGroup {	
 	private var node:Map<String, Variable>;
 	
 	private var rect:FlxSprite;

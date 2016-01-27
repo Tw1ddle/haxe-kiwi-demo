@@ -7,6 +7,7 @@ import motion.easing.Linear;
 import motion.easing.Quad;
 import motion.easing.Sine;
 
+// Maps strings to easing equations for having tweening elements in the JSON for the Candy demo
 class EaseHelper {
 	public static function getEase(name:String):IEasing {
 		if (name == null || name.length == 0) {

@@ -1,4 +1,4 @@
-package states;
+package states.tweens;
 
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
@@ -6,8 +6,8 @@ import flixel.text.FlxText;
 import kiwi.Variable;
 import motion.Actuate;
 
-class Node extends FlxSprite {
-	public var infoText:FlxText;
+class TweenSprite extends FlxSprite {
+	public var infoText(default, null):FlxText;
 	
 	private var speedFactor:Float;
 	private var pX:Variable;

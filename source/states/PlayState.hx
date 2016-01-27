@@ -5,7 +5,8 @@ import flixel.FlxState;
 import flixel.group.FlxSpriteGroup.FlxTypedSpriteGroup;
 import flixel.util.FlxAxes;
 import json.JsonReader;
-import states.layout.LayoutDemo;
+import states.layouts.LayoutDemo;
+import states.tweens.CandiesDemo;
 
 using flixel.util.FlxSpriteUtil;
 
@@ -35,10 +36,10 @@ class PlayState extends FlxState {
 		buttons.push(new TextButton(0, 0, "Simple Layout", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/simple_layout.json")));
 		}));
-		buttons.push(new TextButton(0, 0, "Container Layout", function() {
+		buttons.push(new TextButton(0, 0, "Container", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/container.json")));
 		}));
-		buttons.push(new TextButton(0, 0, "Centered Layout", function() {
+		buttons.push(new TextButton(0, 0, "Centered Container", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/centered.json")));
 		}));
 		buttons.push(new TextButton(0, 0, "Minsize", function() {
@@ -49,12 +50,14 @@ class PlayState extends FlxState {
 		}));
 		
 		// TODO BUG: sometimes these work, other times they don't. Maybe due to map order in Kiwi, or some other bug..?
+		#if debug
 		buttons.push(new TextButton(0, 0, "Maxsize", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/maxsize.json")));
 		}));
 		buttons.push(new TextButton(0, 0, "MinMaxsize", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/minmaxsize.json")));
 		}));
+		#end
 		
 		// TODO
 		//buttons.push(new TextButton(0, 0, "Graphs Demo", function() {

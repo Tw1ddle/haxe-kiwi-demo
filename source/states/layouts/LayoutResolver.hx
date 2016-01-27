@@ -1,4 +1,4 @@
-package states.layout;
+package states.layouts;
 
 import kiwi.Expression;
 import kiwi.frontend.IResolver;
@@ -6,7 +6,7 @@ import kiwi.Solver;
 import kiwi.Symbolics.VariableSymbolics;
 import kiwi.Variable;
 
-class NodeResolver implements IResolver {
+class LayoutResolver implements IResolver {
 	public var solver(default, null):Solver;
 	public var nodes(default, null):Map<String, Map<String, Variable>>;
 	

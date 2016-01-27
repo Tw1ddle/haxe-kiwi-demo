@@ -1,6 +1,6 @@
 package json;
 
-typedef NodeDefinition = {
+typedef LayoutNodeDefinition = {
 	var inequality:String;
 	var strength:String;
 }
