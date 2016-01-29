@@ -6,7 +6,8 @@ import kiwi.Solver;
 import kiwi.Symbolics.VariableSymbolics;
 import kiwi.Variable;
 
-class LayoutResolver implements IResolver {
+// Maps layout items to sets of variables
+class LayoutVarResolver implements IResolver {
 	public var solver(default, null):Solver;
 	public var nodes(default, null):Map<String, Map<String, Variable>>;
 	

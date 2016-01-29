@@ -29,12 +29,14 @@ class PlayState extends FlxState {
 		buttons.push(new TextButton(0, 0, "Candies Demo", function() {
 			openSubState(new CandiesDemo(this));
 		}));
-		// TODO
-		//buttons.push(new TextButton(0, 0, "Ship Demo", function() {
-		//	openSubState(new ShipDemo(this));
+		//buttons.push(new TextButton(0, 0, "Graphs Demo", function() {
+		//	openSubState(new GraphsDemo(this));
 		//}));
 		buttons.push(new TextButton(0, 0, "Simple Layout", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/simple_layout.json")));
+		}));
+		buttons.push(new TextButton(0, 0, "MousePointer", function() {
+			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/pointer.json")));
 		}));
 		buttons.push(new TextButton(0, 0, "Container", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/container.json")));
@@ -44,9 +46,6 @@ class PlayState extends FlxState {
 		}));
 		buttons.push(new TextButton(0, 0, "Minsize", function() {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/minsize.json")));
-		}));
-		buttons.push(new TextButton(0, 0, "MousePointer", function() {
-			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/pointer.json")));
 		}));
 		
 		// TODO BUG: sometimes these work, other times they don't. Maybe due to map order in Kiwi, or some other bug..?
@@ -58,11 +57,6 @@ class PlayState extends FlxState {
 			openSubState(new LayoutDemo(this, JsonReader.readJsonFile("assets/data/minmaxsize.json")));
 		}));
 		#end
-		
-		// TODO
-		//buttons.push(new TextButton(0, 0, "Graphs Demo", function() {
-		//	openSubState(new GraphsDemo(this));
-		//}));
 		
 		var x:Float = 0;
 		for (button in buttons) {

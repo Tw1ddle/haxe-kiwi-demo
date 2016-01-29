@@ -30,7 +30,7 @@ class LayoutDemo extends BaseDemoState {
 		
 		this.layoutString = layoutString;
 		
-		resolver = new LayoutResolver(solver);
+		resolver = new LayoutVarResolver(solver);
 	}
 	
 	override public function create():Void {
@@ -68,7 +68,7 @@ class LayoutDemo extends BaseDemoState {
 			addText("Unknown exception: " + Std.string(error));
 		}
 		
-		var resolver = cast(resolver, LayoutResolver);
+		var resolver = cast(resolver, LayoutVarResolver);
 		
 		for (key in resolver.nodes.keys()) {
 			var node = resolver.nodes.get(key);
@@ -83,7 +83,7 @@ class LayoutDemo extends BaseDemoState {
 		var nodeResolver = null;
 		
 		try {
-			nodeResolver = cast(resolver, LayoutResolver);
+			nodeResolver = cast(resolver, LayoutVarResolver);
 		} catch(error:String) {
 			nodeResolver = null;
 		}
