@@ -9,7 +9,6 @@ import flixel.FlxG;
 import flixel.FlxGame;
 import flixel.FlxState;
 import flixel.system.scaleModes.RatioScaleMode;
-import kiwi.tests.KiwiTestRunner;
 import openfl.system.Capabilities;
 import states.PlayState;
 
@@ -25,10 +24,6 @@ class Main extends Sprite {
 	var startFullscreen:Bool = false; // Whether to start the game in fullscreen on desktop targets
 	
 	static public function main():Void {
-		#if unittests
-		new KiwiTestRunner();
-		#end
-		
 		Lib.current.addChild(new Main());
 	}
 	
@@ -69,7 +64,7 @@ class Main extends Sprite {
 		
 		addChild(new FlxGame(gameWidth, gameHeight, initialState, zoom,
 		                     framerate, framerate, skipSplash, startFullscreen));
-					 
+					
 		FlxG.scaleMode = new RatioScaleMode();
 		FlxG.fixedTimestep = false;
 		

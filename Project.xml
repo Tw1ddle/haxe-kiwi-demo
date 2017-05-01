@@ -5,8 +5,6 @@
 	<meta title="HaxeKiwiDemo" package="uk.co.samcodes.haxekiwidemo" version="1.0.0" company="Sam Twidale" />
 	<app file="HaxeKiwiDemo" main="Main" />
 	
-	<!-- <haxedef name="unittests" /> -->
-	
 	<!--------------------------------WINDOW SETTINGS------------------------------->
 	
 	<!--These window settings apply to all targets-->
@@ -43,7 +41,7 @@
 	<!---------------------------------HAXEDEFINES---------------------------------->
 	
 	<!--Enable this for nape release builds for a serious peformance improvement-->
-	<!--<haxedef name="NAPE_RELEASE_BUILD" />--> 
+	<!--<haxedef name="NAPE_RELEASE_BUILD" />-->
 	
 	<!--Enable the flixel core recording system-->
 	<!--<haxedef name="FLX_RECORD" />-->
