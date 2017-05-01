@@ -11,7 +11,7 @@ haxe:
   - "3.4.2"
 
 install:
-  - haxelib insall actuate
+  - haxelib install actuate
   - haxelib install hxcpp
   - haxelib install lime 2.9.1
   - haxelib install openfl 3.6.1
