@@ -20,8 +20,6 @@ Build the app and tap the buttons at the bottom of the screen to play with it.
 
 ![](screenshots/equalities_demo.png?raw=true)
 
-Configure the ```<set>``` tag at the top of ```Project.xml``` to run optional unit tests.
-
 Edit the JSON constraint definitions in ```assets/data``` to modify the demos.
 
 ## Notes
