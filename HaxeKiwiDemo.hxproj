@@ -22,18 +22,17 @@
     <class path="C:\HaxeToolkit\haxe\lib\actuate\1,8,9\src" />
     <class path="C:\HaxeToolkit\haxe\lib\sure\0,1,1" />
     <class path="source" />
-    <class path="C:\HaxeToolkit\haxe\lib\openfl\8,4,1\externs\flash" />
     <class path="lib\haxe-kiwi" />
-    <class path="export\flash\haxe" />
+    <class path="export\html5\haxe" />
   </classpaths>
   <!-- Build options -->
   <build>
-    <option directives="flixel=4.6.0&#xA;openfl=8.4.1&#xA;lime=7.0.0&#xA;hscript=2.3.0&#xA;actuate=1.8.9&#xA;sure=0.1.1&#xA;FLX_NO_GAMEPAD&#xA;FLX_NO_FOCUS_LOST_SCREEN&#xA;Dfdb&#xA;tools=7.0.0&#xA;FLX_NO_DEBUG&#xA;no-compilation&#xA;openfl-flash&#xA;web&#xA;display" />
+    <option directives="flixel=4.6.0&#xA;openfl=8.4.1&#xA;lime=7.0.0&#xA;hscript=2.3.0&#xA;actuate=1.8.9&#xA;sure=0.1.1&#xA;FLX_NO_GAMEPAD&#xA;FLX_NO_FOCUS_LOST_SCREEN&#xA;tools=7.0.0&#xA;lime-canvas&#xA;FLX_NO_DEBUG&#xA;howlerjs&#xA;no-compilation&#xA;openfl-html5&#xA;lime-webgl&#xA;lime-dom&#xA;lime-howlerjs&#xA;lime-html5&#xA;html5&#xA;web&#xA;html5&#xA;display" />
     <option flashStrict="False" />
     <option noInlineOnDebug="True" />
     <option mainClass="ApplicationMain" />
     <option enabledebug="True" />
-    <option additional="--macro openfl._internal.utils.ExtraParams.include()&#xA;--macro lime._internal.macros.DefineMacro.run()&#xA;--macro flixel.system.macros.FlxDefines.run()&#xA;-swf-version 11.2" />
+    <option additional="--macro openfl._internal.utils.ExtraParams.include()&#xA;--macro lime._internal.macros.DefineMacro.run()&#xA;--remap flash:openfl&#xA;--macro flixel.system.macros.FlxDefines.run()" />
   </build>
   <!-- haxelib libraries -->
   <haxelib>
