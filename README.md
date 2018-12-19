@@ -10,7 +10,7 @@ Try it out now [in your browser](http://tw1ddle.github.io/haxe-kiwi-demo/).
 
 This demo requires HaxeFlixel and Actuate, so install these first:
 ```bash
-haxelib git flixel https://github.com/HaxeFlixel/flixel dev # Else try stable branch of HaxeFlixel: haxelib install flixel
+haxelib install flixel # Also install any dependencies like OpenFL, Lime etc
 haxelib install actuate
 ```
 
