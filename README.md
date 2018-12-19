@@ -3,14 +3,14 @@
 [![Build Status](https://img.shields.io/travis/Tw1ddle/haxe-kiwi-demo.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/haxe-kiwi-demo)
 
 Demo of the [Haxe port](https://github.com/Tw1ddle/haxe-kiwi) of the [Kiwi](https://github.com/nucleic/kiwi) constraint solver. Kiwi is an efficient implementation of the [Cassowary algorithm](http://constraints.cs.washington.edu/cassowary/) based on the seminal Cassowary paper.
-	
-Try it out now [in your browser](http://tw1ddle.github.io/haxe-kiwi-demo/).
+
+Run it [in your browser](http://tw1ddle.github.io/haxe-kiwi-demo/).
 
 ## Usage
 
 This demo requires HaxeFlixel and Actuate, so install these first:
 ```bash
-haxelib install flixel # Also install any dependencies like OpenFL, Lime etc
+haxelib install flixel
 haxelib install actuate
 ```
 
