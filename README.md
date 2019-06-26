@@ -1,6 +1,7 @@
 # Haxe Kiwi Demo
 
 [![Build Status](https://img.shields.io/travis/Tw1ddle/haxe-kiwi-demo.svg?style=flat-square)](https://travis-ci.org/Tw1ddle/haxe-kiwi-demo)
+[![License](https://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/haxe-kiwi-demo/blob/master/LICENSE)
 
 Demo of the [Haxe port](https://github.com/Tw1ddle/haxe-kiwi) of the [Kiwi](https://github.com/nucleic/kiwi) constraint solver. Kiwi is an efficient implementation of the [Cassowary algorithm](http://constraints.cs.washington.edu/cassowary/) based on the seminal Cassowary paper.
 
