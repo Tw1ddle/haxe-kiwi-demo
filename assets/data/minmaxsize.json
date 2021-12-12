@@ -1,0 +1,12 @@
+{
+   "nodes":[
+		{ "inequality": "container.left == 0", "strength": "required" },
+		{ "inequality": "container.top == 0", "strength": "required" },
+		{ "inequality": "container.width >= global.mousex", "strength": "strong" },
+		{ "inequality": "container.height >= global.mousey", "strength": "strong" },
+		{ "inequality": "container.width <= 400", "strength": "required" },
+		{ "inequality": "container.height <= 400", "strength": "required" },
+		{ "inequality": "container.width >= 200", "strength": "required" },
+		{ "inequality": "container.height >= 200", "strength": "required" }
+   ]
+}
