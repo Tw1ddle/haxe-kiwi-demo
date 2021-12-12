@@ -17,7 +17,9 @@ haxelib install flixel
 
 Build the app and tap the buttons at the bottom of the screen to play with it.
 
-![](screenshots/layout_demo.png?raw=true)
+![](screenshots/layout_animation.gif?raw=true)
+
+![](screenshots/candies_animation.gif?raw=true)
 
 ![](screenshots/equalities_demo.png?raw=true)
 
