@@ -1,4 +1,4 @@
-# Haxe Kiwi Demo
+[![Project logo](https://github.com/Tw1ddle/haxe-kiwi-demo/blob/master/screenshots/logo.png?raw=true "Haxe Kiwi Demo - an implementation of the Cassowary constraint solving algorithm")](https://tw1ddle.github.io/haxe-kiwi-demo/)
 
 [![License](https://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://github.com/Tw1ddle/haxe-kiwi-demo/blob/master/LICENSE)
 [![Build Status Badge](https://ci.appveyor.com/api/projects/status/github/Tw1ddle/haxe-kiwi-demo)](https://ci.appveyor.com/project/Tw1ddle/haxe-kiwi-demo)
